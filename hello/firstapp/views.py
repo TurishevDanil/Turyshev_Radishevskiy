@@ -36,7 +36,8 @@ def details(request):
      return HttpResponsePermanentRedirect("/")
 
 def index(request):
- return render(request, "firstapp/index.html")
+ cat = ["Ноутбуки", "Принтеры", "Сканеры", "Диски", "Шнуры"]
+ return render(request, "firstapp/index.html", context={"cat": cat})
 
 
 
