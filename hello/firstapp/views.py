@@ -28,15 +28,8 @@ def details(request):
     return HttpResponsePermanentRedirect("/")
 
 def index(request):
-    if request.method == "POST":
-        name = request.POST.get("name") # получить значения поля Имя
-        age = request.POST.get("age") # значения поля Возраст
-        output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст – {1}</h3>".format(name, age)
-        return HttpResponse(output)
-    else:
-        userform = UserForm()
-        return render(request, "index.html", {"form": userform})
-
+    userform = UserForm()
+    return render(request, "index.html", {"form": userform})
 
 
 
