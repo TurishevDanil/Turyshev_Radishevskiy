@@ -4,7 +4,13 @@ from django.http import *
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 from django.template.response import TemplateResponse
 from .forms import UserForm
+from .models import Person
+from django.db.models import F
 
+
+# person = Person.objects.get(id=2)
+# person.delete()
+# Person.objects.filter(id=4).delete()
 
 def products(request, productid):
     category = request.GET.get("cat", "")
