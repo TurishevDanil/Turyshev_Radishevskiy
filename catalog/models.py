@@ -1,5 +1,11 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib import admin
+
+
+class AuthorAdmin(admin.ModelAdmin):
+    pass
+
 
 class Genre(models.Model):
  name = models.CharField(max_length=200,
@@ -45,6 +51,10 @@ class Book(models.Model):
  isbn = models.CharField(max_length=13,
  help_text="Должно содержать 13 символов",
  verbose_name="ISBN книги")
+
+ def display_author(self):
+   return ', '.join([author.last_name for author in self.author.all()])
+ display_author.short_description = 'Авторы'
  
  def __str__(self):
     return self.title
@@ -77,3 +87,19 @@ class BookInstance(models.Model):
  verbose_name="Дата окончания статуса")
  def __str__(self):
     return '%s %s %s' % (self.inv_nom, self.book, self.status)
+ 
+class AuthorAdmin(admin.ModelAdmin):
+ list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
+
+# @admin.register(Book) 
+# class BookAdmin(admin.ModelAdmin):
+#  list_display = ('title', 'genre', 'language', 'display_author')
+
+# @admin.register(BookInstance)
+# class BookinstanceAdmin(admin.ModelAdmin): 
+#    pass
+
+class AuthorAdmin(admin.ModelAdmin):
+ list_display = ('last_name', 'first_name')
+ fields = ['first_name', 'last_name',
+ ('date_of_birth', 'date_of_death')]
