@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\vKirb\OneDrive\Рабочий стол\общая папка\git_Turyshev\Turyshev_Radishevskiy\.venv
+set VIRTUAL_ENV=C:\Users\patri\Desktop\git_second-project\Turyshev_Radishevskiy\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
