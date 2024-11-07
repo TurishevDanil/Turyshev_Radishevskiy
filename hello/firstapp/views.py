@@ -23,20 +23,24 @@ def users(request):
     output = "<h2>Пользователь</h2><h3>id: {0} Имя: {1}</h3 >" .format(id, name)
     return HttpResponse(output)
 
+def index(request):
+ return render(request, "firstapp/index.html")
 
 def about(request):
-    return HttpResponse("About")
+ return render(request, "firstapp/about.html")
 
 def contact(request):
-    return HttpResponseRedirect("/about")
+    my_kv = ['I квартал ->', 'II квартал ->', 'III квартал->',
+    'IV квартал->']
+    my_month = ['Январь', 'Февраль', 'Март',
+    'Апрель', 'Май', 'Июнь',
+    'Июль', 'Август', 'Сентябрь',
+    'Октябрь', 'Ноябрь', 'Декабрь']
+    context = {'my_month': my_month, 'my_kv': my_kv}
+    return render(request, "firstapp/contact.html", context)
 
 def details(request):
     return HttpResponsePermanentRedirect("/")
-
-def index(request):
-    people = Person.objects.all()
-    return render(request, "index.html", {"people": people})
-
 
 def create(request):
     if request.method == "POST":
@@ -45,7 +49,6 @@ def create(request):
         klient.age = request.POST.get("age")
         klient.save()
     return HttpResponseRedirect("/")
-
 
 def edit(request, id):
     try:
@@ -60,7 +63,6 @@ def edit(request, id):
     except Person.DoesNotExist:
         return HttpResponseNotFound("<h2>Клиент не найден</h2>")
 
-
 def delete(request, id):
     try:
         person = Person.objects.get(id=id)
@@ -68,5 +70,3 @@ def delete(request, id):
         return HttpResponseRedirect("/")
     except Person.DoesNotExist:
         return HttpResponseNotFound("<h2>Клиент не найден</h2>")
-
-

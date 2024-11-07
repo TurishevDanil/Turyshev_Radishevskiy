@@ -14,6 +14,18 @@ python3 -m venv venv
 
 
 python -m venv .venv
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+.venv\Scripts\Activate.ps1
+
+pip install django==4.2
+
+python manage.py runserver
+
+python manage.py makemigration
+
+python manage.py migrate
 ```
 
 Activating venv python [mac].
@@ -23,11 +35,6 @@ source venv/bin/activate
 ```
 Activating venv python [windows -> powershell].
 
-```sh
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-.venv\Scripts\Activate.ps1
-```
 
 Deactivation venv python.
 

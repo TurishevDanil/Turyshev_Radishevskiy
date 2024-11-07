@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <title>Привет Django</title>
-</head>
-<body>
- <h1>Контактные данные компании</h1>
- <h2>"Интеллектуальные программные системы"</h2>
- <h3>{{ work }}</h3>
- <h3>Адрес: г. Москва, ул. Короленко, д. 24</h3>
- <h4>templates/firstapp/contact.html</h4>
-</body>
-</html>
+{% extends "firstapp/base.html" %}
+{% block title %}Главная страница{% endblock title %}
+{% block header %}Это главная страница сайта - index.html.{% endblock header %}
+{% block content%}
+ Месяцы (поквартально)
+ <div class="container-fluid my-2 text-start">
+ <div class="row">
+ <div class="col-6 text-end">
+ {% for kv in my_kv %}
+ <div>{{ kv }}</div>
+ {% endfor %}
+ </div>
+ <div class="col-6">
+ <div class="row">
+ {% for month in my_month %}
+ <div class="col-4">{{ month }}</div>
+ {% endfor %}
+ </div>
+ </div>
+ </div>
+ </div>
+{% endblock content %}

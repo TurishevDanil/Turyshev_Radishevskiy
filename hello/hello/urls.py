@@ -21,11 +21,10 @@ from firstapp import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='index'),
     path('create/', views.create),
-    path('about/', TemplateView.as_view(template_name="firstapp/about.html")),
-    path('contact/', TemplateView.as_view(template_name="firstapp/contact.html",
-    extra_context={"work": "Разработка программных продуктов"})),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
     path('edit/<int:id>/', views.edit),
     path('delete/<int:id>/', views.delete),
 ]
