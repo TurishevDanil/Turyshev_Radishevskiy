@@ -24,10 +24,17 @@ def users(request):
     return HttpResponse(output)
 
 def index(request):
- return render(request, "firstapp/index.html")
+ my_text = 'Изучаем формы Django'
+ context = {'my_text': my_text}
+ return render(request, "firstapp/index.html", context)
 
 def about(request):
  return render(request, "firstapp/about.html")
+
+def my_form(request):
+ my_form = UserForm() 
+ context = {"form": my_form} 
+ return render(request, "firstapp/my_form.html", context)
 
 def contact(request):
     my_kv = ['I квартал ->', 'II квартал ->', 'III квартал->',

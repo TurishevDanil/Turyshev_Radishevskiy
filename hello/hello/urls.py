@@ -25,6 +25,7 @@ urlpatterns = [
     path('create/', views.create),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('my_form/', views.my_form, name='my_form'),
     path('edit/<int:id>/', views.edit),
     path('delete/<int:id>/', views.delete),
 ]
