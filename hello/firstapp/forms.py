@@ -1,65 +1,78 @@
 from django import forms
 
 # class UserForm(forms.Form):
-#  file = forms.FileField(label="Файл")
+#  combo_text = forms.ComboField(label='Введите данные',
+#  fields=[
+#  forms.CharField(max_length=20),
+#  forms.EmailField()])
 
 # class UserForm(forms.Form):
-#  file_path = forms.FilePathField(label="Выберите файл",
-#  path="C:/my_doc/")
+#  combo_text = forms.MultiValueField(label='Комплексное поле',
+#  fields=(
+#  forms.CharField(max_length=20),
+#  forms.EmailField()))
 
 # class UserForm(forms.Form):
-#  file_path = forms.FilePathField(label="Выберите файл",
-#  path="C:/my_doc/",
-#  allow_files="True",
-#  allow_folders="True")
+#  date_time = forms.SplitDateTimeField(label="Введите дату и время")
 
 # class UserForm(forms.Form):
-#  num = forms.FloatField(label="Введите число")
+#  name = forms.CharField(label="Имя")
+#  age = forms.IntegerField(label="Возраст")
+#  comment = forms.CharField(label="Комментарий")
 
 # class UserForm(forms.Form):
-#  ip_adres = forms.GenericIPAddressField(label="IP адрес",
-#  help_text=" Пример формата 192.0.2.0")
+#  name = forms.CharField(label="Имя")
+#  age = forms.IntegerField(label="Возраст")
+#  comment = forms.CharField(label="Комментарий",
+#  widget=forms.Textarea)
 
 # class UserForm(forms.Form):
-#  file = forms.ImageField(label="Изображение")
+#  name = forms.CharField(label="Имя", initial="Введите ФИО")
+#  age = forms.IntegerField(label="Возраст", initial=18)
+#  comment = forms.CharField(label="Комментарий",
+#  widget=forms.Textarea) 
 
 # class UserForm(forms.Form):
-#  num = forms.IntegerField(label="Введите целое число")
-
-# class UserForm(forms.Form):
-#  num = forms.JSONField(label="Данные формата JSON")
-
-# class UserForm(forms.Form):
-#  country = forms.MultipleChoiceField(label="Выберите страны",
-#  choices=((1, "Англия"),
-#           (2, "Германия"),
-#           (3, "Испания"),
-#           (4, "Россия")))
+#  name = forms.CharField(label="Имя", initial="Введите ФИО")
+#  age = forms.IntegerField(label="Возраст", initial=18)
+#  field_order = ["age", "name"]
  
 # class UserForm(forms.Form):
-#  vyb = forms.NullBooleanField(label="Вы поедете в Сочи этим летом?")
+#  name = forms.CharField(label="Имя", initial="Введите ФИО")
+#  age = forms.IntegerField(label="Возраст", initial=18) 
 
 # class UserForm(forms.Form):
-#  reg_text = forms.RegexField(label="Текст", regex="^[0-9][A-F][0-9]$")
+#  name = forms.CharField(label="Имя", help_text="Введите ФИО")
+#  age = forms.IntegerField(label="Возраст", help_text="Введите возраст")
 
 # class UserForm(forms.Form):
-#  slug_text = forms.SlugField(label="Введите текст")
+#  name = forms.CharField(label="Имя")
+#  age = forms.IntegerField(label="Возраст")
+#  email = forms.EmailField(label="Электронный адрес")
+#  reklama = forms.BooleanField(label="Согласны получать рекламу")
 
 # class UserForm(forms.Form):
-#  time = forms.DateField(label="Введите время")
+#  name = forms.CharField(label="Имя")
+ 
+# class UserForm(forms.Form):
+#  name = forms.CharField(label="Имя клиента")
+#  age = forms.IntegerField(label="Возраст клиента")
 
 # class UserForm(forms.Form):
-#  city = forms.TypedMultipleChoiceField(label="Выберите город",
-#  empty_value=None,
-#  choices=((1, "Москва"),
-#           (2, "Воронеж"),
-#           (3, "Курск"),
-#           (4, "Томск")))
+#  name = forms.CharField(label="Имя клиента")
+#  age = forms.IntegerField(label="Возраст клиента") 
 
 # class UserForm(forms.Form):
-#  url_text = forms.URLField(label="Введите URL",
-#  help_text="Например http://www.yandex.ru")
-
+#  name = forms.CharField(label="Имя клиента", min_length=3,
+#  help_text='Не менее 3-х символов')
+#  age = forms.IntegerField(label="Возраст клиента",
+#  min_value=1, max_value=120,
+#  help_text='От 1 до 120 лет')
+#  required_css_class = "field"
+#  error_css_class = "error"
+ 
 class UserForm(forms.Form):
- uuid_text = forms.UUIDField(label="Введите UUID",
- help_text="Формат xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ name = forms.CharField(label="Имя клиента",
+ widget=forms.TextInput(attrs={"class": "myfield"}))
+ age = forms.IntegerField(label="Возраст клиента",
+ widget=forms.NumberInput(attrs={"class": "myfield"}))
