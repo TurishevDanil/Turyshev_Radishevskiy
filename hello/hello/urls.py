@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.urls import re_path
+from django.urls import include, re_path
+from django.conf import settings
+from django.conf.urls.static import static
 from firstapp import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('create/', views.create),
     path('about/', views.about, name='about'),
@@ -28,7 +31,13 @@ urlpatterns = [
     path('my_form/', views.my_form, name='my_form'),
     path('edit/<int:id>/', views.edit),
     path('delete/<int:id>/', views.delete),
+    path('my_form/delete/<int:id>/', views.delete),
+    path('form_up_img/', views.form_up_img, name='form_up_img'),
+    path('form_up_img/delete_img/<int:id>/', views.delete_img),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
 

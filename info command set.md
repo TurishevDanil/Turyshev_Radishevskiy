@@ -28,6 +28,8 @@ python manage.py runserver
 python manage.py makemigration
 
 python manage.py migrate
+
+pip install Pillow
 ```
 
 Activating venv python [mac].

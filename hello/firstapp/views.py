@@ -6,11 +6,37 @@ from django.template.response import TemplateResponse
 from .forms import UserForm
 from .models import Person
 from django.db.models import F
+from .models import Image
+from .forms import ImageForm
+from django.shortcuts import redirect
 
 
 # person = Person.objects.get(id=2)
 # person.delete()
 # Person.objects.filter(id=4).delete()
+def form_up_img(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    my_text = 'Загруженные изображения'
+    my_img = Image.obj_img.all()
+    form = ImageForm()
+    context = {'my_text': my_text, "my_img": my_img, "form": form}
+    return render(request, 'firstapp/form_up_img.html', context)
+    
+def delete_img(request, id):
+    try:
+        img = Image.obj_img.get(id=id)
+        img.delete()
+        return redirect('form_up_img')
+    except Person.DoesNotExist:
+        return HttpResponseNotFound("<h2>Объект не найден</h2>")
+    
+def edit_form(request, id):
+       # Логика для редактирования формы
+       return render(request, 'your_template.html', {'id': id})
+
 
 def products(request, productid):
     category = request.GET.get("cat", "")
