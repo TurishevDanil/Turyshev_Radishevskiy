@@ -21,6 +21,8 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 pip install django==4.2
 
+pip install django-bootstrap-v5
+
 python manage.py runserver
 
 python manage.py makemigration
@@ -61,8 +63,6 @@ python -m pip install -r requirements.txt
 ```
 Basic Django Commands
 ```sh
-pip install django==4.2 -> installing django package version
+
 django-admin startproject "name project" ->  creating a new project
-python manage.py runserver -> starting django server, Quit the server with CTRL-BREAK
-python manage.py migrate -> runs migrations on the database
 ```
