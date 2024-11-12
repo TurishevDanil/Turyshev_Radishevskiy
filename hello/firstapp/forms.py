@@ -1,5 +1,23 @@
 from django import forms
 from .models import Image 
+from .models import File
+from .models import VideoFile
+from .models import AudioFile
+
+class FileForm(forms.ModelForm): 
+    class Meta: 
+        model = File 
+        fields = '__all__' 
+
+class VideoForm(forms.ModelForm): 
+    class Meta: 
+        model = VideoFile 
+        fields = '__all__' 
+
+class AudioForm(forms.ModelForm): 
+    class Meta: 
+        model = AudioFile 
+        fields = '__all__' 
 
 # class UserForm(forms.Form):
 #  combo_text = forms.ComboField(label='Введите данные',
